@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f6f7fb" />
+  <title>MoneyTracker — личные финансы</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">m</span><span>money<span class="brand-light">tracker</span></span></a>
+      <div class="nav-caption">МЕНЮ</div>
+      <nav class="nav-list">
+        <a class="nav-item active" href="#overview"><span class="nav-icon">▦</span>Обзор</a>
+        <a class="nav-item" href="#history"><span class="nav-icon">↕</span>Операции</a>
+        <a class="nav-item" href="#analytics"><span class="nav-icon">▥</span>Аналитика</a>
+      </nav>
+      <div class="side-bottom">
+        <div class="tip-card"><div class="tip-spark">✳</div><strong>Маленькие шаги —<br>большие цели</strong><p>Следи за расходами сегодня, чтобы уверенно планировать завтра.</p></div>
+        <div class="profile"><div class="avatar">М</div><div><b>Мой аккаунт</b><small>Личный бюджет</small></div><span class="dots">•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="overview">
+      <header class="topbar"><div><div class="eyebrow">ВОСКРЕСЕНЬЕ, 8 НОЯБРЯ</div><h1>Добрый день! <span class="wave">✦</span></h1><p class="subtitle">Вот что происходит с твоими финансами.</p></div><div class="top-actions"><button class="icon-button" id="exportBtn" title="Экспорт CSV">⇩</button><button class="primary-button" id="addBtn"><span>＋</span> Добавить операцию</button></div></header>
+
+      <section class="month-row"><div><h2 id="monthTitle">Ноябрь 2026</h2><p>Твоя финансовая сводка</p></div><div class="month-controls"><button class="icon-button" id="prevMonth" aria-label="Предыдущий месяц">‹</button><button class="today-button" id="currentMonth">Сегодня</button><button class="icon-button" id="nextMonth" aria-label="Следующий месяц">›</button></div></section>
+
+      <section class="summary-grid">
+        <article class="summary-card balance-card"><div class="card-top"><span>Общий баланс</span><span class="card-symbol balance-symbol">◉</span></div><div class="big-number" id="balanceValue">₸ 0</div><div class="card-foot"><span class="positive-pill">●</span><span>Доходы минус расходы за месяц</span></div><div class="balance-orb orb-one"></div><div class="balance-orb orb-two"></div></article>
+        <article class="summary-card"><div class="card-top"><span>Доходы</span><span class="card-symbol income-symbol">↗</span></div><div class="big-number" id="incomeValue">₸ 0</div><div class="card-foot"><span class="mini-tag green-tag">↑</span><span id="incomeCount">0 операций</span></div></article>
+        <article class="summary-card"><div class="card-top"><span>Расходы</span><span class="card-symbol expense-symbol">↘</span></div><div class="big-number" id="expenseValue">₸ 0</div><div class="card-foot"><span class="mini-tag pink-tag">↓</span><span id="expenseCount">0 операций</span></div></article>
+      </section>
+
+      <section class="content-grid" id="analytics">
+        <article class="panel chart-panel"><div class="panel-heading"><div><h3>Движение средств</h3><p>Доходы и расходы по дням месяца</p></div><span class="legend"><i class="legend-income"></i>Доходы <i class="legend-expense"></i>Расходы</span></div><div class="chart-wrap"><div class="y-labels"><span>₸ 300k</span><span>₸ 200k</span><span>₸ 100k</span><span>₸ 0</span></div><div class="chart-area"><div class="grid-lines"><i></i><i></i><i></i><i></i></div><div class="bars" id="monthlyChart"></div><div class="x-labels"><span>1–5</span><span>6–10</span><span>11–15</span><span>16–20</span><span>21–25</span><span>26–31</span></div></div></div></article>
+        <article class="panel budget-panel"><div class="panel-heading"><div><h3>Месячный бюджет</h3><p>Контролируй свои расходы</p></div><button class="more-button" id="budgetEdit" title="Изменить бюджет">•••</button></div><div class="budget-total"><strong id="budgetSpent">₸ 0</strong><span>из <b id="budgetLimit">₸ 0</b></span></div><div class="progress-track"><div class="progress-fill" id="budgetProgress"></div></div><div class="budget-meta"><span id="budgetPercent">0% использовано</span><span id="budgetLeft">Осталось ₸ 0</span></div><div class="budget-note" id="budgetNote"><span>✦</span> Хорошее начало! Продолжай следить за расходами.</div></article>
+      </section>
+
+      <section class="content-grid lower-grid">
+        <article class="panel category-panel"><div class="panel-heading"><div><h3>Расходы по категориям</h3><p>На что уходят деньги</p></div><span class="period-label">ЭТОТ МЕСЯЦ⌄</span></div><div class="category-content"><div class="donut" id="categoryDonut"><div class="donut-hole"><strong id="categoryTotal">₸ 0</strong><small>всего</small></div></div><div class="category-legend" id="categoryLegend"></div></div></article>
+        <article class="panel history-panel" id="history"><div class="panel-heading"><div><h3>Последние операции</h3><p>Твои недавние транзакции</p></div><button class="text-button" id="showAll">Все операции <span>→</span></button></div><div class="history-list" id="historyList"></div><div class="empty-state hidden" id="emptyState"><div>◌</div><b>Пока нет операций</b><span>Добавь первую доходную или расходную операцию.</span><button class="text-button" id="emptyAdd">＋ Добавить операцию</button></div></article>
+      </section>
+      <footer>Твои финансы — под контролем <span>✦</span><small>Данные хранятся только в этом браузере</small></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="transactionModal"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="closeModal" aria-label="Закрыть">×</button><div class="eyebrow">НОВАЯ ТРАНЗАКЦИЯ</div><h2 id="modalTitle">Добавить операцию</h2><p class="modal-sub">Заполни детали — остальное мы посчитаем.</p><form id="transactionForm"><div class="type-switch"><button type="button" class="type-choice selected" data-type="expense">Расход</button><button type="button" class="type-choice" data-type="income">Доход</button></div><input type="hidden" id="formType" value="expense"><label>Сумма, ₸<div class="amount-input"><span>₸</span><input id="amountInput" type="number" min="1" step="1" placeholder="0" required></div></label><div class="form-row"><label>Категория<select id="categoryInput" required></select></label><label>Дата<input id="dateInput" type="date" required></label></div><label>Описание<input id="descriptionInput" type="text" maxlength="60" placeholder="Например, обед с друзьями"></label><button class="primary-button submit-button" type="submit">Сохранить операцию <span>→</span></button></form></section></div>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
